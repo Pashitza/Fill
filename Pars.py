@@ -1,11 +1,11 @@
-from tkinter import *
-import requests
-def get_crypt():
+from tkinter import * # библиотека
+import requests # библиотека
+def get_crypt(): # функция
     """ДАННАЯ ФУНКЦИЯ ВЫПОЛНЯЕТ ПАРСИНГ КРИПТОВАЛЮТЫ С САЙТА COINMARKETCAP"""
-    global info
-    global metka
+    global info # переменная
+    global metka # переменная
     metka.destroy() # удаляет метку при повторном получаении информации о криптовалюте
-    lst=[] # Объяляю список
+    lst=[] # Объявляет список
     request=requests.get(url='https://api.coinmarketcap.com/data-api/v3/cryptocurrency/listing?start=1&limit=10000').json() # API coinmarketcap в формате json
     for crypto in request['data']['cryptoCurrencyList']:
         if crypto.get('name').lower() == info.get().lower(): # сравнение поля ввода и названия криптовалюты
